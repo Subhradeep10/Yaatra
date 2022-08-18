@@ -75,3 +75,12 @@
     border: none;
     outline: none;
   }
+  .headerSearchText {
+    color: lightgray;
+    cursor: pointer;
+  }
+  .date {
+    position: absolute;
+    top: 50px;
+    z-index: 2;
+  }
