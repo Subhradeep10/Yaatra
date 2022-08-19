@@ -1,4 +1,5 @@
 import React from "react";
+import Featured from "../../Components/Featured/Featured";
 import Header from "../../Components/Header/Header";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./Home.css";
@@ -8,7 +9,10 @@ const Home = () => {
     <div>
       <Navbar />
       <Header />
-      <div className="homeContainer"></div>
+      <div className="homeContainer">
+        <Featured />
+        <Featured />
+      </div>
     </div>
   );
 };
