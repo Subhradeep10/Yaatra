@@ -5,7 +5,7 @@ const Featured = () => {
     <div className="featured">
       <div className="featuredItem">
         <img
-          src="https://www.tourmyindia.com/states/west-bengal/images/darjeeling-hills-tour.jpg"
+          src="https://i.natgeofe.com/n/0f031e0a-61b8-4bdf-b832-13c703c616f4/79404.jpg?w=636&h=477"
           alt=""
           className="featuredImg"
         />
