@@ -19,6 +19,12 @@
     color: white;
     text-decoration: none;
 }
+.logo-new{
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
 .navButton{
     margin: 20px;
     border: none;
