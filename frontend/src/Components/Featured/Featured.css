@@ -17,7 +17,7 @@
   }
   .featuredItem:hover{
     cursor: pointer;
-    box-shadow: 10px 10px 10px rgba(0, 0, 80, 0.5);
+    box-shadow: 10px 10px 5px rgba(0, 0, 80, 0.5);
   }
   
   .featuredImg{
