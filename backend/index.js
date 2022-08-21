@@ -18,11 +18,12 @@ const connect = async () => {
     }
 };
 
-app.use(express.json());
-
 //Middleware
+app.use(express.json());
 app.use("/api/auth", auth);
 app.use("/api/hotels", hotels);
+app.use("/api/users", users);
+app.use("/api/rooms", rooms);
 
 app.listen(8800, () => {
     connect();
