@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const auth = require('./routes/auth');
+
 const app = express();
 dotenv.config();
 
@@ -13,6 +15,8 @@ const connect = async () => {
     }
 };
 
+//Middleware
+app.use("/auth", auth);
 
 app.listen(8800, () => {
     connect();
