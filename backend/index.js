@@ -19,6 +19,7 @@ const connect = async () => {
 };
 
 //Middleware
+
 app.use(express.json());
 app.use("/api/auth", auth);
 app.use("/api/hotels", hotels);
