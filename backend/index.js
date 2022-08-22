@@ -26,6 +26,12 @@ app.use("/api/hotels", hotels);
 app.use("/api/users", users);
 app.use("/api/rooms", rooms);
 
+app.use((err, req, res, next) => {
+    const errorStatus = err.status || 500;
+    const errorMessage = err.message || 'Something went wrong';
+    return res.status(errorStatus).json({ status: errorStatus, message: errorMessage, stack: err.stack });
+});
+
 app.listen(8800, () => {
     connect();
     console.log('Server is running on port 8800');

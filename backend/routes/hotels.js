@@ -1,5 +1,6 @@
 const express = require('express');
 const hotels = require('../models/hotels');
+const createError = require('../utils/error');
 const router = express.Router();
 
 //CREATE
@@ -40,13 +41,14 @@ router.get('/:id', async (req, res) => {
     }
 });
 //GET ALL
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
+    const failed = true
 
     try {
         const Hotels = await hotels.find();
         res.status(200).json(Hotels);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 });
 
