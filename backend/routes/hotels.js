@@ -6,14 +6,15 @@ const createError = require('../utils/error');
 const deleteHotel = require('../controllers/hotel');
 const getHotel = require('../controllers/hotel');
 const getAllHotels = require('../controllers/hotel');
+const verifyAdmin = require('../utils/verifytoken');
 const router = express.Router();
 
 //CREATE
-router.post('/', createHotel);
+router.post('/', verifyAdmin, createHotel);
 //UPDATE
-router.put('/:id', updateHotel);
+router.put('/:id', verifyAdmin, updateHotel);
 //DELETE
-router.delete('/:id', deleteHotel);
+router.delete('/:id', verifyAdmin, deleteHotel);
 //GET
 router.get('/:id', getHotel);
 //GET ALL
