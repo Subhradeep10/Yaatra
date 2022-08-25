@@ -1,9 +1,16 @@
 const express = require('express');
-const router = express.Router();
 const updateUser = require('../controllers/users');
 const deleteUser = require('../controllers/users');
 const getUser = require('../controllers/users');
 const getAllUsers = require('../controllers/users');
+const verifyToken = require('../utils/verifytoken');
+
+const router = express.Router();
+
+
+router.get('/checkauthentication', verifyToken, (req, res, next) => {
+    res.status(200).json({ message: 'You are authenticated' });
+})
 
 
 //UPDATE
