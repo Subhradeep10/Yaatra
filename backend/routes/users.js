@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 router.get('/checkauthentication', verifyToken, (req, res, next) => {
-    res.status(200).json({ message: 'You are authenticated' });
+    res.json({ message: 'You are authenticated' });
 })
 
 
