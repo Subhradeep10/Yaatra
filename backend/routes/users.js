@@ -1,11 +1,11 @@
 const express = require('express');
-const updateUser = require('../controllers/users');
-const deleteUser = require('../controllers/users');
-const getUser = require('../controllers/users');
-const getAllUsers = require('../controllers/users');
-const verifyAdmin = require('../utils/verifytoken');
+const updateUser = require('../controllers/users/updateUser');
+const deleteUser = require('../controllers/users/deleteUser');
+const getUser = require('../controllers/users/getUser');
+const getAllUsers = require('../controllers/users/getAllUser');
+const verifyAdmin = require('../utils/verifyAdmin');
 const verifyToken = require('../utils/verifytoken');
-const verifyUser = require('../utils/verifytoken');
+const verifyUser = require('../utils/verifyUser');
 
 const router = express.Router();
 
