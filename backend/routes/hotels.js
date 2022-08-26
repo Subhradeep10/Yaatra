@@ -8,6 +8,7 @@ const getHotel = require('../controllers/hotel/getHotel');
 const getAllHotels = require('../controllers/hotel/getAllHotels');
 const verifyAdmin = require('../utils/verifytoken');
 const countByCity = require('../controllers/hotel/countByCity');
+const countByType = require('../controllers/hotel/countByType');
 const router = express.Router();
 
 //CREATE
@@ -21,5 +22,6 @@ router.get('/find/:id', getHotel);
 //GET ALL
 router.get('/', getAllHotels);
 router.get('/countByCity', countByCity);
+router.get('/countByType', countByType);
 
 module.exports = router;
