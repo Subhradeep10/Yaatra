@@ -7,6 +7,7 @@ const deleteHotel = require('../controllers/hotel/deleteHotel');
 const getHotel = require('../controllers/hotel/getHotel');
 const getAllHotels = require('../controllers/hotel/getAllHotels');
 const verifyAdmin = require('../utils/verifytoken');
+const countByCity = require('../controllers/hotel/countByCity');
 const router = express.Router();
 
 //CREATE
@@ -16,8 +17,9 @@ router.put('/:id', verifyAdmin, updateHotel);
 //DELETE
 router.delete('/:id', verifyAdmin, deleteHotel);
 //GET
-router.get('/:id', getHotel);
+router.get('/find/:id', getHotel);
 //GET ALL
 router.get('/', getAllHotels);
+router.get('/countByCity', countByCity);
 
 module.exports = router;

@@ -6,6 +6,7 @@ const users = require('./routes/users');
 const hotels = require('./routes/hotels');
 const rooms = require('./routes/rooms');
 const cookieParser = require('cookie-parser')
+const cors = require('cors');
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,7 @@ const connect = async () => {
 //Middleware
 app.use(express.json());
 app.use(cookieParser())
+app.use(cors());
 app.use("/api/auth", auth);
 app.use("/api/hotels", hotels);
 app.use("/api/users", users);
