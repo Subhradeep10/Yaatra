@@ -8,6 +8,7 @@ import { DateRange } from "react-date-range";
 import Navbar from "../../Components/Navbar/Navbar";
 import Header from "../../Components/Header/Header";
 import SearchItem from "../../Components/SearchItem/SearchItem";
+import useFetch from "../../Hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
@@ -15,6 +16,15 @@ const List = () => {
   const [date, setDate] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
+
+  const { data, loading, error, reFetch } = useFetch(
+    `api/hotels?city=${destination}`
+  );
+  console.log(data);
+
+  const handleClick = () => {
+    reFetch();
+  };
 
   return (
     <div>
@@ -26,7 +36,11 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder="Destination" type="text" />
+              <input
+                onChange={(e) => setDestination(e.target.value)}
+                type="text"
+                value={destination}
+              />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -86,18 +100,18 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button>Search</button>
+            <button onClick={handleClick}>Search</button>
           </div>
           <div className="listResult">
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {loading ? (
+              "Loading"
+            ) : (
+              <>
+                {data.map((item) => (
+                  <SearchItem key={item._id} item={item} />
+                ))}
+              </>
+            )}
           </div>
         </div>
       </div>
