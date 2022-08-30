@@ -1,61 +1,60 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
-    user: JSON.parse(localStorage.getItem("user")) || null,
-    loading: false,
-    error: null,
+    city: undefined,
+    dates: [],
+    options: {
+        adult: undefined,
+        children: undefined,
+        room: undefined,
+    },
 };
 
-export const AuthContext = createContext(INITIAL_STATE);
+export const SearchContext = createContext(INITIAL_STATE);
 
-const AuthReducer = (state, action) => {
+const SearchReducer = (state, action) => {
     switch (action.type) {
-        case "LOGIN_START":
-            return {
-                user: null,
-                loading: true,
-                error: null,
-            };
-        case "LOGIN_SUCCESS":
-            return {
-                user: action.payload,
-                loading: false,
-                error: null,
-            };
-        case "LOGIN_FAILURE":
-            return {
-                user: null,
-                loading: false,
-                error: action.payload,
-            };
-        case "LOGOUT":
-            return {
-                user: null,
-                loading: false,
-                error: null,
-            };
+        case "NEW_SEARCH":
+            return action.payload;
+        case "RESET_SEARCH":
+            return INITIAL_STATE;
         default:
             return state;
     }
 };
 
-export const AuthContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
-
-    useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(state.user));
-    }, [state.user]);
+export const SearchContextProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
 
     return (
-        <AuthContext.Provider
+        <SearchContext.Provider
             value={{
-                user: state.user,
-                loading: state.loading,
-                error: state.error,
+                city: state.city,
+                dates: state.dates,
+                options: state.options,
                 dispatch,
             }}
         >
             {children}
-        </AuthContext.Provider>
+        </SearchContext.Provider>
     );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
