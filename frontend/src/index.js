@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SearchContextProvider } from './Context/SearchContext.';
+import { AuthContextProvider } from './Context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SearchContextProvider>
-      <App />
-    </SearchContextProvider>
+    <AuthContextProvider>
+      <SearchContextProvider>
+        <App />
+      </SearchContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
