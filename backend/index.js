@@ -24,10 +24,16 @@ const connect = async () => {
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors());
+app.get('/', (req, res) => {
+    res.json('Hello World');
+})
 app.use("/api/auth", auth);
 app.use("/api/hotels", hotels);
 app.use("/api/users", users);
 app.use("/api/rooms", rooms);
+
+
+
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;
