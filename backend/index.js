@@ -41,7 +41,7 @@ app.use((err, req, res, next) => {
     return res.status(errorStatus).json({ status: errorStatus, message: errorMessage, stack: err.stack });
 });
 
-app.listen(8800, () => {
+app.listen(process.env.PORT || 8800, () => {
     connect();
     console.log('Server is running on port 8800');
 });
