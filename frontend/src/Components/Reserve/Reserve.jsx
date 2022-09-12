@@ -12,7 +12,9 @@ import { SearchContext } from "../../Context/SearchContext.";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, loading, error } = useFetch(`/api/hotels/room/${hotelId}`);
+  const { data, loading, error } = useFetch(
+    `https://yaatra-backend.herokuapp.com/api/hotels/room/${hotelId}`
+  );
   console.log(data);
   const { dates } = useContext(SearchContext);
 
@@ -58,9 +60,12 @@ const Reserve = ({ setOpen, hotelId }) => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
-          const res = axios.put(`/api/rooms/availability/${roomId}`, {
-            dates: alldates,
-          });
+          const res = axios.put(
+            `https://yaatra-backend.herokuapp.com/api/rooms/availability/${roomId}`,
+            {
+              dates: alldates,
+            }
+          );
           return res.data;
         })
       );

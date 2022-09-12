@@ -23,7 +23,9 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
+  const { data, loading, error, reFetch } = useFetch(
+    `https://yaatra-backend.herokuapp.com/api/hotels/find/${id}`
+  );
   const { dates, options } = useContext(SearchContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -57,7 +59,7 @@ const Hotel = () => {
     if (user) {
       setOpenModal(true);
     } else {
-      navigate("/login");
+      navigate("https://yaatra-backend.herokuapp.com/login");
     }
   };
 

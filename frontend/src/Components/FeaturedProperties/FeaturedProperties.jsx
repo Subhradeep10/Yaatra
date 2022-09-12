@@ -2,7 +2,9 @@ import useFetch from "../../Hooks/useFetch";
 import "./FeaturedProperties.css";
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch("api/hotels?featured=true&limit=3");
+  const { data, loading, error } = useFetch(
+    "https://yaatra-backend.herokuapp.com/api/hotels?featured=true&limit=3"
+  );
   console.log(data);
   return (
     <div className="fp">
