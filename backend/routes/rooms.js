@@ -1,14 +1,15 @@
-const express = require('express');
-const createRoom = require('../controllers/room/createRoom');
-const getRoom = require('../controllers/room/getRoom');
-const updateRoom = require('../controllers/room/updateRoom');
-const deleteRoom = require('../controllers/room/deleteRoom');
-const getAllRooms = require('../controllers/room/getAllRooms');
-const updateRoomAvailability = require('../controllers/room/updateRoomAvailability');
-const verifyAdmin = require('../utils/verifytoken');
+import express from "express";
+import {
+    createRoom,
+    deleteRoom,
+    getRoom,
+    getRooms,
+    updateRoom,
+    updateRoomAvailability,
+} from "../controllers/room.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
-
 //CREATE
 router.post("/:hotelid", verifyAdmin, createRoom);
 
@@ -22,6 +23,6 @@ router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
 router.get("/:id", getRoom);
 //GET ALL
 
-router.get("/", getAllRooms);
+router.get("/", getRooms);
 
-module.exports = router;
+export default router;

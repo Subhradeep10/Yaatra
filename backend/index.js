@@ -1,12 +1,12 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const auth = require('./routes/auth');
-const users = require('./routes/users');
-const hotels = require('./routes/hotels');
-const rooms = require('./routes/rooms');
-const cookieParser = require('cookie-parser')
-const cors = require('cors');
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import auth from "./routes/auth.js";
+import users from "./routes/users.js";
+import hotels from "./routes/hotels.js";
+import rooms from "./routes/rooms.js";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
@@ -21,9 +21,9 @@ const connect = async () => {
 };
 
 //Middleware
-app.use(express.json());
+app.use(cors())
 app.use(cookieParser())
-app.use(cors());
+app.use(express.json());
 app.get('/', (req, res) => {
     res.json('Hello World');
 })
