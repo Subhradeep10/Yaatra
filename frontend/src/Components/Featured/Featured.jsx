@@ -3,7 +3,7 @@ import useFetch from "../../Hooks/useFetch";
 import "./Featured.css";
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "https://yaatra-backend.herokuapp.com/api/hotels/countbyCity?cities=Kolkata,New Delhi"
+    "/hotels/countbyCity?cities=Kolkata,New Delhi"
   );
   console.log(data);
 

@@ -20,9 +20,7 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `https://yaatra-backend.herokuapp.com/api/hotels?city=${destination}&min=${
-      min || 0
-    }&max=${max || 10000}`
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 10000}`
   );
   console.log(data);
 
